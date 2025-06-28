@@ -1,0 +1,162 @@
+/* --- Reseteo y configuración general --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #f5f5f5; /* COLOR_TEXTO */
+    background: linear-gradient(160deg, #9800b7, #220294); /* COLOR_GRADIENTE_1 a COLOR_GRADIENTE_2 */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.container {
+    max-width: 900px;
+}
+
+/* --- Logo --- */
+.logo-container {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.main-logo {
+    max-width: 600px; /* Tamaño para pantallas grandes */
+    height: auto;
+    width: 100%; /* Asegura que no se desborde */
+}
+
+/* --- Textos y Títulos --- */
+.main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #00fff7; /* COLOR_CIAN */
+    text-shadow: 0 0 15px rgba(0, 255, 247, 0.7);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 1.5rem auto;
+}
+
+/* --- Anuncio de Precio --- */
+.price-announcement {
+    margin: 3rem 0;
+}
+
+.price-intro {
+    font-size: 1.2rem;
+}
+
+.price-tag {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #39ff14; /* COLOR_VERDE_NEON */
+    text-shadow: 0 0 20px rgba(57, 255, 10, 0.6);
+    margin: 1rem 0;
+}
+
+.price-clarification {
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+
+/* --- Formulario y Llamado a la Acción (CTA) --- */
+.cta {
+    margin-top: 2rem;
+}
+
+.cta-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#contact-form input {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 450px;
+    border: 2px solid #0099ff; /* COLOR_AZUL */
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #f5f5f5;
+    text-align: center;
+}
+
+#contact-form input::placeholder {
+    color: #ccc;
+}
+
+#contact-form button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #040404; /* COLOR_ENTRADA (negro) */
+    background-color: #39ff14; /* COLOR_VERDE_NEON */
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 450px;
+}
+
+#contact-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.8);
+}
+
+/* --- REGLAS PARA ADAPTAR A CELULARES (DISEÑO RESPONSIVE) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem; /* Menos espacio en los bordes */
+    }
+
+    .main-logo {
+        max-width: 300px; /* Logo más pequeño en celulares */
+    }
+
+    .main-title {
+        font-size: 1.8rem; /* Título principal más chico */
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .price-tag {
+        font-size: 2.5rem; /* Anuncio de "GRATIS" más chico */
+    }
+
+    .cta-title {
+        font-size: 1.5rem;
+    }
+}
