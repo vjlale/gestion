@@ -3,23 +3,551 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alen.iA - La gestión de tu negocio cambia para siempre</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <title>ALENIA GESTIÓN - Acceso Exclusivo 48h Antes</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Reseteo y configuración general --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #f5f5f5; /* COLOR_TEXTO */
+            background: linear-gradient(160deg, #9800b7, #220294); /* TU GRADIENTE ORIGINAL */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        /* --- Barra de urgencia --- */
+        .urgency-bar {
+            background: rgba(255, 68, 68, 0.9);
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            animation: pulse 2s infinite;
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        /* --- Logo --- */
+        .logo-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .main-logo {
+            max-width: 600px;
+            height: auto;
+            width: 100%;
+        }
+
+        /* --- Badge de lanzamiento --- */
+        .launch-badge {
+            background: #39ff14; /* TU COLOR VERDE NEON */
+            color: #040404;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: #ff4444;
+            text-decoration: line-through;
+        }
+
+        /* --- Textos y Títulos --- */
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00fff7; /* TU COLOR CIAN */
+            text-shadow: 0 0 15px rgba(0, 255, 247, 0.7);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 1.5rem auto;
+        }
+
+        /* --- Screenshot demo --- */
+        .demo-section {
+            margin: 2rem 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 247, 0.3);
+        }
+
+        .demo-title {
+            color: #00fff7;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .demo-video {
+            text-align: center;
+        }
+
+        .demo-gif {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #00fff7;
+            box-shadow: 0 8px 25px rgba(0, 255, 247, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .demo-gif:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 35px rgba(0, 255, 247, 0.5);
+        }
+
+        .demo-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #00fff7;
+            font-size: 0.9rem;
+        }
+
+        .screenshot-placeholder {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px dashed #00fff7;
+            padding: 2rem;
+            border-radius: 10px;
+            color: #00fff7;
+        }
+
+        /* --- Social proof --- */
+        .social-proof {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #39ff14;
+        }
+
+        /* --- Anuncio de Precio --- */
+        .price-announcement {
+            margin: 3rem 0;
+        }
+
+        .price-intro {
+            font-size: 1.2rem;
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #39ff14; /* TU COLOR VERDE NEON */
+            text-shadow: 0 0 20px rgba(57, 255, 10, 0.6);
+            margin: 1rem 0;
+        }
+
+        .price-clarification {
+            font-style: italic;
+            margin-top: 1rem;
+        }
+
+        .price-benefits {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            gap: 1rem;
+        }
+
+        .benefit-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 200px;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+        }
+
+        .why-free {
+            font-style: italic;
+            margin: 1rem 0;
+            opacity: 0.9;
+        }
+
+        /* --- Countdown --- */
+        .countdown-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border: 2px solid #0099ff;
+        }
+
+        .countdown-title {
+            color: #0099ff;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        #countdown-timer {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #39ff14;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.6);
+        }
+
+        /* --- Formulario y Llamado a la Acción (CTA) --- */
+        .cta {
+            margin-top: 2rem;
+        }
+
+        .cta-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #00fff7;
+        }
+
+        .cta-subtitle {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Estilos para los campos del formulario mejorados */
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-label {
+            display: block;
+            color: #00fff7; /* Tu color cian */
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-shadow: 0 0 10px rgba(0, 255, 247, 0.5);
+        }
+
+        #contact-form input[type="text"] {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            width: 100%;
+            min-height: 60px;
+            border: 3px solid #0099ff; /* Tu color azul */
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            color: #f5f5f5;
+            text-align: left;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(0, 153, 255, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        #contact-form input[type="text"]:focus {
+            outline: none;
+            border-color: #00fff7; /* Tu color cian */
+            box-shadow: 
+                0 0 20px rgba(0, 255, 247, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        #contact-form input[type="email"] {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            padding: 1.2rem 1.5rem;
+            width: 100%;
+            min-height: 60px;
+            border: 3px solid #0099ff; /* Tu color azul */
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+            color: #f5f5f5;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 15px rgba(0, 153, 255, 0.2),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+        }
+
+        #contact-form input[type="email"]:focus {
+            outline: none;
+            border-color: #00fff7; /* Tu color cian */
+            box-shadow: 
+                0 0 20px rgba(0, 255, 247, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        #contact-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-style: italic;
+        }
+
+        #contact-form button {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #040404; /* Negro */
+            background: linear-gradient(145deg, #39ff14, #2ee60a); /* Tu verde neón con gradiente */
+            border: none;
+            border-radius: 12px;
+            padding: 1.2rem 2.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            min-height: 65px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 6px 20px rgba(57, 255, 20, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.2);
+        }
+
+        #contact-form button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 10px 30px rgba(57, 255, 20, 0.5),
+                inset 0 2px 4px rgba(255, 255, 255, 0.3);
+            background: linear-gradient(145deg, #2ee60a, #39ff14);
+        }
+
+        #contact-form button:active {
+            transform: translateY(-1px) scale(1.01);
+        }
+
+        .form-guarantee {
+            font-size: 0.8rem;
+            margin-top: 1rem;
+            opacity: 0.8;
+        }
+
+        .form-note {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: #00fff7;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- RESPONSIVE DESIGN MEJORADO --- */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+                align-items: flex-start;
+                min-height: auto;
+            }
+
+            .container {
+                margin-top: 1rem;
+            }
+
+            .urgency-bar {
+                font-size: 0.8rem;
+                padding: 6px;
+            }
+
+            .main-logo {
+                max-width: 280px;
+            }
+
+            .launch-badge {
+                font-size: 0.8rem;
+                padding: 4px 12px;
+            }
+
+            .main-title {
+                font-size: 1.6rem;
+                line-height: 1.3;
+            }
+
+            .subtitle {
+                font-size: 0.95rem;
+                margin: 1rem auto;
+            }
+
+            .demo-section {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .demo-title {
+                font-size: 1.2rem;
+            }
+
+            .price-tag {
+                font-size: 2.2rem;
+            }
+
+            .price-intro {
+                font-size: 1rem;
+            }
+
+            .price-benefits {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .benefit-item {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            #countdown-timer {
+                font-size: 1.4rem;
+            }
+
+            .countdown-section {
+                padding: 1rem;
+            }
+
+            .cta-title {
+                font-size: 1.4rem;
+            }
+
+            .cta-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+            
+            .form-label {
+                font-size: 0.9rem;
+            }
+            
+            #contact-form input[type="text"],
+            #contact-form input[type="email"] {
+                padding: 1rem 1.2rem;
+                font-size: 1rem;
+                min-height: 55px;
+            }
+            
+            #contact-form button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+                min-height: 60px;
+            }
+
+            .form-note {
+                font-size: 0.8rem;
+            }
+
+            .social-proof {
+                padding: 1rem;
+                margin: 1.5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-logo {
+                max-width: 250px;
+            }
+
+            .main-title {
+                font-size: 1.4rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .price-tag {
+                font-size: 1.8rem;
+            }
+
+            #countdown-timer {
+                font-size: 1.2rem;
+            }
+
+            .demo-section {
+                padding: 0.8rem;
+            }
+
+            .screenshot-placeholder {
+                padding: 1rem;
+                font-size: 0.8rem;
+            }
+
+            #contact-form input[type="text"],
+            #contact-form input[type="email"] {
+                padding: 0.9rem 1rem;
+                font-size: 0.95rem;
+                min-height: 50px;
+            }
+            
+            #contact-form button {
+                padding: 0.9rem 1.5rem;
+                font-size: 1rem;
+                min-height: 55px;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <div class="container">
+        <!-- Barra de urgencia -->
+        <div class="urgency-bar">
+            🔥 ACCESO EXCLUSIVO - Solo primeros 200 registros 🔥
+        </div>
+
         <header class="logo-container">
             <img src="alen_ia_logo.png" alt="Logo Alen.iA" class="main-logo">
         </header>
 
         <main>
             <section class="hero">
+                <div class="launch-badge">LANZAMIENTO: VIERNES 5 DE JULIO</div>
+                
                 <h1 class="main-title">Seguís manejando 
              tú negocio con un EXCEL? En serio??🧮</h1>
                                 
@@ -28,26 +556,105 @@
                 </p>
             </section>
 
+            <!-- Demo de la app -->
+            <section class="demo-section">
+                <h2 class="demo-title">🎬 Mirá ALENIA GESTIÓN en acción:</h2>
+                <div class="demo-video">
+                    <img src="Demo 1.Gif" alt="Demo de ALENIA GESTIÓN en funcionamiento" class="demo-gif">
+                    <p class="demo-caption">🎬 Mirá qué fácil es gestionar tu inventario</p>
+                </div>
+            </section>
+
+            <!-- Social proof -->
+            <section class="social-proof">
+                <p>🎯 <strong>Ya probado por 50+ empresarios en beta testing</strong></p>
+                <p><em>"Me ahorra 3 horas diarias de trabajo manual"</em> - María G., Boutique</p>
+            </section>
+
             <section class="price-announcement">
-                <p class="price-intro">💰Suena CARO? Sabemos que los números no te ayudan a pagar un sistema asi pero...  <strong>Gestión Alen.iA</strong>
- </p>
+                <p class="price-intro">💰Suena CARO? Sabemos que los números no te ayudan a pagar un sistema asi pero...  <strong>Gestión Alen.iA</strong></p>
                 <h2 class="price-tag">🚀 Es GRATIS!!! 🚀</h2>
+                
+                <div class="price-benefits">
+                    <div class="benefit-item">✅ Sin límites de productos</div>
+                    <div class="benefit-item">✅ Sin límites de ventas</div>
+                    <div class="benefit-item">✅ Todas las funciones</div>
+                    <div class="benefit-item">✅ Para siempre</div>
+                </div>
+                
                 <p class="price-clarification">✅De verdad. Sin trampas, sin letra chica y para siempre. Para que la guita que te ahorrás la inviertas en lo que de verdad importa: <strong>tu negocio.</strong></p>
                 <p class="price-clarification">✅Si tenés tu inventario en un excel, en 3 simples pasos tenés el sistema de gestión automatizado funcionando 100% con tus productos. No es maravilloso? ✨</p>
             </section>
-            
+
+            <!-- Countdown -->
+            <section class="countdown-section">
+                <h3 class="countdown-title">⏰ Lanzamiento oficial en:</h3>
+                <div id="countdown-timer">Cargando...</div>
+            </section>
 
             <section class="cta">
-                <h3 class="cta-title">Anticipate a todos. Automatizá tu negocio</h3>
-                <p class="cta-subtitle">Dejanos tu email y te pasamos el link de descarga 2 días antes del lanzamiento oficial. ¡Totalmente gratis!</p>
+                <h3 class="cta-title">🎯 Anticipate a todos. Automatizá tu negocio</h3>
+                <p class="cta-subtitle">Dejanos tu email y te pasamos el link de descarga <strong>2 días antes del lanzamiento oficial</strong>. ¡Totalmente gratis!</p>
                 
                 <form id="contact-form" action="https://formspree.io/f/mnnvlrzr" method="POST">
-                    <input type="email" name="email" placeholder="Escribí tu correo electrónico" required>
-                    <button type="submit">¡AUTOMATIZAR MI NEGOCIO!</button>
+                    <div class="form-group">
+                        <label for="rubro" class="form-label">💼 ¿A qué te dedicás?</label>
+                        <input type="text" id="rubro" name="rubro" placeholder="Contanos qué vendés o qué servicios ofrecés..." required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">📧 Tu email para enviarte la app</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    
+                    <input type="hidden" name="source" value="landing-exclusivo">
+                    <input type="hidden" name="timestamp" value="">
+                    
+                    <button type="submit">🚀 QUIERO ACCESO EXCLUSIVO</button>
+                    <p class="form-note">💌 Recibirás el link el miércoles 3 de julio + guía de instalación</p>
                 </form>
+                
+                <p class="form-guarantee">🔒 Tu email está seguro. Sin spam. Te puedes desuscribir cuando quieras.</p>
             </section>
         </main>
+
+        <footer class="footer">
+            <p>Desarrollado por <strong>ALEN.IA</strong> - Automatización inteligente para PYMES</p>
+        </footer>
     </div>
 
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const launchDate = new Date('2025-07-05T10:00:00-03:00').getTime();
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('countdown-timer').innerHTML = "¡YA DISPONIBLE!";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            const timeString = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+            document.getElementById('countdown-timer').innerHTML = timeString;
+        }
+        
+        // Ejecutar inmediatamente y luego cada segundo
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Timestamp para formulario
+            const timestampField = document.querySelector('input[name="timestamp"]');
+            if (timestampField) {
+                timestampField.value = new Date().toISOString();
+            }
+        });
+    </script>
 </body>
 </html>
