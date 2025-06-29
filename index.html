@@ -596,7 +596,8 @@
                 <h3 class="cta-title">🎯 Anticipate a todos. Automatizá tu negocio</h3>
                 <p class="cta-subtitle">Dejanos tu email y te pasamos el link de descarga <strong>2 días antes del lanzamiento oficial</strong>. ¡Totalmente gratis!</p>
                 
-                <form id="contact-form" action="https://formspree.io/f/mnnvlrzr" method="POST">
+                <!-- FORMULARIO CONECTADO A N8N EN RAILWAY -->
+                <form id="contact-form" action="https://primary-production-83b5f.up.railway.app/webhook/alenia-leads" method="POST">
                     <div class="form-group">
                         <label for="rubro" class="form-label">💼 ¿A qué te dedicás?</label>
                         <input type="text" id="rubro" name="rubro" placeholder="Contanos qué vendés o qué servicios ofrecés..." required>
@@ -607,8 +608,11 @@
                         <input type="email" id="email" name="email" placeholder="tu@email.com" required>
                     </div>
                     
+                    <!-- CAMPOS ADICIONALES PARA N8N -->
                     <input type="hidden" name="source" value="landing-exclusivo">
                     <input type="hidden" name="timestamp" value="">
+                    <input type="hidden" name="utm_source" value="landing">
+                    <input type="hidden" name="utm_campaign" value="lanzamiento-julio-2025">
                     
                     <button type="submit">🚀 QUIERO ACCESO EXCLUSIVO</button>
                     <p class="form-note">💌 Recibirás el link el miércoles 3 de julio + guía de instalación</p>
@@ -623,8 +627,10 @@
         </footer>
     </div>
 
+    <!-- JAVASCRIPT OPTIMIZADO PARA N8N -->
     <script>
-        // Countdown timer
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configurar countdown timer
         function updateCountdown() {
             const launchDate = new Date('2025-07-05T10:00:00-03:00').getTime();
             const now = new Date().getTime();
@@ -644,17 +650,75 @@
             document.getElementById('countdown-timer').innerHTML = timeString;
         }
         
-        // Ejecutar inmediatamente y luego cada segundo
-        document.addEventListener('DOMContentLoaded', function() {
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Configurar timestamp automático
+        const timestampField = document.querySelector('input[name="timestamp"]');
+        if (timestampField) {
+            timestampField.value = new Date().toISOString();
+        }
+        
+        // Manejar envío del formulario
+        const form = document.getElementById('contact-form');
+        const button = form.querySelector('button[type="submit"]');
+        const originalButtonText = button.textContent;
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevenir envío normal
             
-            // Timestamp para formulario
-            const timestampField = document.querySelector('input[name="timestamp"]');
-            if (timestampField) {
-                timestampField.value = new Date().toISOString();
-            }
+            // Actualizar timestamp
+            timestampField.value = new Date().toISOString();
+            
+            // Feedback visual
+            button.textContent = '⏳ PROCESANDO...';
+            button.disabled = true;
+            
+            // Obtener datos del formulario
+            const formData = new FormData(form);
+            
+            // Enviar a N8N
+            fetch('https://primary-production-83b5f.up.railway.app/webhook/alenia-leads', {
+                method: 'POST',
+                body: formData
+            }).then(response => {
+                if (response.ok) {
+                    // Éxito
+                    button.textContent = '✅ ¡REGISTRADO EXITOSAMENTE!';
+                    button.style.background = 'linear-gradient(145deg, #39ff14, #2ee60a)';
+                    
+                    // Mostrar mensaje de éxito personalizado
+                    setTimeout(() => {
+                        const email = formData.get('email');
+                        const rubro = formData.get('rubro');
+                        
+                        alert(`🎉 ¡Perfecto ${email}!
+                        
+✅ Tu registro para ${rubro} fue procesado exitosamente
+🚀 Recibirás el link de descarga el MIÉRCOLES 3 DE JULIO
+📧 Revisá tu email en las próximas horas
+⭐ Score de compatibilidad calculado automáticamente
+
+¡Gracias por confiar en ALENIA GESTIÓN!`);
+                        
+                    }, 1000);
+                } else {
+                    throw new Error('Error en el servidor');
+                }
+            }).catch((error) => {
+                // Error
+                console.error('Error:', error);
+                button.textContent = '❌ ERROR - Intentar de nuevo';
+                button.disabled = false;
+                button.style.background = '#ff4444';
+                
+                setTimeout(() => {
+                    button.textContent = originalButtonText;
+                    button.style.background = 'linear-gradient(145deg, #39ff14, #2ee60a)';
+                }, 3000);
+            });
         });
+    });
     </script>
 </body>
 </html>
